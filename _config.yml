@@ -21,7 +21,7 @@ cusdis:
 
 user:
   name: Andri Muji Hartono
-  pic: /assets/img/picamh.jpg
+  pic: /assets/img/Capture.PNG
   picAlt: "andri muji hartono"
   job: .Net Developer
   aboutme: true # comment this out if you don't need the 'about' page.
