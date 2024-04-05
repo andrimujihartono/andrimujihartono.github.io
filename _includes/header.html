@@ -1,36 +1,26 @@
-<header class="header">
 
-  <div class="header_content">
-    <label class="theme_changer">
-      <input theme_toggle type="checkbox">
-      <div class="button"></div>
-    </label>
-    <a class="header_circle" href="{{ '/' | relative_url }}">
-      <img src="{{ site.user.pic | relative_url }}" alt="{{ site.user.picAlt }}">
-    </a>
-    <span class="header_name">{{ site.user.name }}</span>
-    <span class="header_job">{{ site.user.job }}</span>
-    <span class="header_mes">{{ site.user.message }}</span>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <nav class="nav">
-      {% if site.user.aboutme %}
-      <ul class="nav_list">
-        <li class="nav_item">
-          <a href="{{ site.baseurl }}/aboutme.html">about</a>
-        </li>
-      </ul>
-      {% endif %}
-      <!-- {% for category in site.categories %}
-      {% capture cat_name %}{{ category | first }}{% endcapture %}
-      <ul class="nav_list">
-        <li class="nav_item">
-          <a href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
-            ({{ category | last | size }})</a>
-        </li>
-      </ul>
-      {% endfor %} -->
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+          <a class="navbar-brand col-lg-3 me-0" href="{{ site.baseurl }}">{{ site.user.name }}</a>
+          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+            {% for category in site.categories %}
+            {% capture cat_name %}{{ category | first }}{% endcapture %}
+            
+              <li class="nav-item">
+                <a class="nav-link" href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
+                  ({{ category | last | size }})</a>
+              </li>
+          
+            {% endfor %}
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            <!-- <button class="btn btn-primary">Button</button> -->
+          </div>
+        </div>
+      </div>
     </nav>
-  </div>
-
-</header>
-
