@@ -6,7 +6,7 @@
         </button>
 
         <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
-          <a class="navbar-brand col-lg-3 me-0" href="{{ site.baseurl }}">{{ site.user.name }}</a>
+          <a class="navbar-brand col-lg-3 me-0" href="{{ '/' | relative_url }}">{{ site.user.name }}</a>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             {% for category in site.categories %}
             {% capture cat_name %}{{ category | first }}{% endcapture %}
