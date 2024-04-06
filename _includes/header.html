@@ -10,10 +10,10 @@
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             {% for category in site.categories %}
             {% capture cat_name %}{{ category | first }}{% endcapture %}
-            
+            <!-- ({{ category | last | size }}) -->
               <li class="nav-item">
-                <a class="nav-link" href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
-                  ({{ category | last | size }})</a>
+                <a class="nav-link text-capitalize" href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
+                  </a>
               </li>
           
             {% endfor %}
