@@ -1,1 +1,335 @@
-<p> test </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume – Andri Muji Hartono</title>
+  <meta name="description" content="One-page resume for web & print." />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --chip: #eef2ff;
+      --line: #e5e7eb;
+      --card: #f9fafb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b0f17;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --chip: #111827;
+        --line: #1f2937;
+        --card: #0d1420;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.55;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Page */
+    .page {
+      max-width: 960px;
+      margin: 32px auto;
+      padding: 0 20px 64px;
+    }
+
+    /* Header */
+    header {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+      padding: 24px 0 12px;
+      border-bottom: 2px solid var(--line);
+    }
+    .name {
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .title {
+      font-size: clamp(14px, 2.2vw, 18px);
+      color: var(--muted);
+      margin-top: -4px;
+    }
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      font-size: 14px;
+    }
+    .contacts span { color: var(--muted); }
+    .tagline {
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    /* Layout */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    @media (min-width: 880px) {
+      .content {
+        grid-template-columns: 2fr 1fr;
+        gap: 28px;
+      }
+    }
+
+    /* Sections */
+    section {
+      background: var(--card);
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    section h2 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Experience */
+    .role {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 8px;
+      margin-bottom: 14px;
+    }
+    .role h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+    li { margin: 4px 0; }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+    }
+
+    /* Sidebar lists */
+    .kv {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 10px;
+      font-size: 14px;
+    }
+    .kv .k { color: var(--muted); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    /* Print */
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0 auto; padding: 0; max-width: 100%; }
+      section { break-inside: avoid; background: transparent; border-color: #ddd; }
+      .no-print { display: none !important; }
+    }
+
+    /* Utilities */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      border: 0;
+    }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .grow { flex: 1 1 auto; }
+    .right { text-align: right; }
+    .muted { color: var(--muted); }
+    .btn {
+      display: inline-block;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--card);
+      cursor: pointer;
+    }
+    .btn:hover { filter: brightness(0.98); }
+  </style>
+</head>
+<body>
+  <div class="page" role="document">
+    <div class="no-print row" style="justify-content: space-between; align-items: center; margin-top: 12px;">
+      <span class="muted">Tip: Update text, then use “Save as PDF”.</span>
+      <button class="btn" onclick="window.print()">Download PDF</button>
+    </div>
+
+    <header>
+      <div>
+        <div class="name">Andri Muji Hartono</div>
+        <div class="title">Software Engineer</div>
+      </div>
+      <div class="contacts" aria-label="contact info">
+        <span>City, Country</span>
+        <a href="mailto:you@example.com">you@example.com</a>
+        <a href="tel:+628123456789">+62 812-3456-789</a>
+        <a href="https://yourwebsite.com">yourwebsite.com</a>
+        <a href="https://linkedin.com/in/yourhandle">linkedin.com/in/yourhandle</a>
+        <a href="https://github.com/yourhandle">github.com/yourhandle</a>
+      </div>
+      <p class="tagline">
+        2–3 line summary highlighting your strengths, domain expertise, and what you’re looking for.
+        Keep it concise, concrete, and tailored to the role.
+      </p>
+    </header>
+
+    <main class="content">
+      <!-- Main column -->
+      <div>
+        <section aria-labelledby="experience">
+          <h2 id="experience">Experience</h2>
+
+          <div class="role">
+            <h3>Senior Frontend Engineer • PT Contoso</h3>
+            <div class="meta">Jan 2023 – Present • Jakarta, ID</div>
+            <div class="meta" style="grid-column: 1 / -1;">
+              React, TypeScript, Next.js, Tailwind
+            </div>
+          </div>
+          <ul>
+            <li>Led redesign of e‑commerce UI and improved conversion by 18% through A/B testing.</li>
+            <li>Built design system components shared across 4 apps, cutting dev time by 30%.</li>
+            <li>Collaborated with backend team to optimize API calls, reducing TTFB by 40%.</li>
+          </ul>
+
+          <div class="role" style="margin-top: 14px;">
+            <h3>Software Engineer • Fabrikam</h3>
+            <div class="meta">Aug 2020 – Dec 2022 • Remote</div>
+            <div class="meta" style="grid-column: 1 / -1;">
+              Node.js, Express, PostgreSQL, GCP
+            </div>
+          </div>
+          <ul>
+            <li>Designed and implemented REST APIs handling 2M+ requests/day with 99.95% uptime.</li>
+            <li>Introduced observability (logs, traces, metrics) using OpenTelemetry.</li>
+            <li>Mentored 3 junior engineers through weekly code reviews and pairing.</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="projects">
+          <h2 id="projects">Projects</h2>
+          <div class="role">
+            <h3>Keyword Sentiment Dashboard</h3>
+            <div class="meta">2024</div>
+            <div class="meta" style="grid-column: 1 / -1;">Python, FastAPI, SQLite, Charts</div>
+          </div>
+          <ul>
+            <li>Ingested social posts by keyword and classified sentiment with 86% F1.</li>
+            <li>Delivered interactive charts and automated weekly PDF summaries.</li>
+          </ul>
+
+          <div class="chips">
+            <span class="chip">Demo: yourwebsite.com/sentiment</span>
+            <span class="chip">Code: github.com/you/sentiment</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar column -->
+      <aside>
+        <section aria-labelledby="skills">
+          <h2 id="skills">Skills</h2>
+          <div class="chips" aria-label="skills list">
+            <span class="chip">JavaScript</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">React</span>
+            <span class="chip">Next.js</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Testing</span>
+            <span class="chip">CI/CD</span>
+          </div>
+        </section>
+
+        <section aria-labelledby="education">
+          <h2 id="education">Education</h2>
+          <div class="kv">
+            <div class="k">Degree</div><div class="v"><strong>B.Sc. Computer Science</strong></div>
+            <div class="k">School</div><div class="v">Universitas XYZ</div>
+            <div class="k">Years</div><div class="v">2016 – 2020</div>
+            <div class="k">GPA</div><div class="v">3.7 / 4.0</div>
+          </div>
+        </section>
+
+        <section aria-labelledby="extras">
+          <h2 id="extras">Certs & Awards</h2>
+          <ul>
+            <li>AWS Certified Cloud Practitioner (2024)</li>
+            <li>Top 5% – Frontend Mentor (2023)</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="languages">
+          <h2 id="languages">Languages</h2>
+          <div class="kv">
+            <div class="k">Indonesian</div><div class="v">Native</div>
+            <div class="k">English</div><div class="v">Professional</div>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer aria-label="footer">
+      <p>© Your Name — This resume is designed for both web and print. Update content and print to PDF.</p>
+    </footer>
+  </div>
+
+  <!-- Optional: structured data to help SEO when hosted online -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "url": "https://yourwebsite.com",
+    "email": "you@example.com",
+    "telephone": "+628123456789",
+    "jobTitle": "Frontend Engineer",
+    "sameAs": [
+      "https://linkedin.com/in/yourhandle",
+      "https://github.com/yourhandle"
+    ]
+  }
+  </script>
+</body>
+</html>
