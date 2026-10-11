@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Project List — layout horizontal untuk halaman Project
+   Didesain untuk dipakai bersama Bootstrap 5.3.3
+   ========================================================================== */
+    .page {
+      max-width: 960px;
+      margin: 32px auto;
+      padding: 0 20px 64px;
+    }
+    
+:root {
+  --proj-ink: #1a1a1a;
+  --proj-muted: #5c5c5c;
+  --proj-line: #e4e4e4;
+  --proj-accent: #2d6cdf;
+  --proj-accent-soft: #eef3fc;
+}
+
+.project-list {
+  margin-top: 1rem;
+}
+
+.project-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--proj-line);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.project-item:first-child {
+  padding-top: 0.5rem;
+}
+
+.project-item:hover {
+  background-color: var(--proj-accent-soft);
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 6px;
+}
+
+.project-item__thumb {
+  flex: 0 0 140px;
+  width: 140px;
+  height: 100px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-item__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-item__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.project-item__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--proj-ink);
+  margin-bottom: 0.3rem;
+}
+
+.project-item__desc {
+  font-size: 0.95rem;
+  color: var(--proj-muted);
+  margin-bottom: 0.6rem;
+  max-width: 60ch;
+}
+
+.project-item__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-item__tag {
+  font-size: 0.78rem;
+  color: var(--proj-muted);
+  background-color: #f4f4f4;
+  padding: 0.15rem 0.55rem;
+  border-radius: 100px;
+  line-height: 1.6;
+}
+
+.project-item__action {
+  flex: 0 0 auto;
+  align-self: center;
+  font-size: 0.9rem;
+  color: var(--proj-accent);
+  white-space: nowrap;
+}
+
+.project-item:hover .project-item__action {
+  text-decoration: underline;
+}
+
+/* Mobile: thumbnail naik ke atas, susunan jadi vertikal */
+@media (max-width: 576px) {
+  .project-item {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .project-item__thumb {
+    width: 100%;
+    height: 160px;
+  }
+
+  .project-item__action {
+    align-self: flex-start;
+  }
+}

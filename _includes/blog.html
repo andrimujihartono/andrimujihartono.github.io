@@ -1,0 +1,28 @@
+{% if page.type %}
+<div class="container py-5" style="max-width: 760px;">
+        <h1 class="h4 mb-4">{{ page.type }}</h1>
+        <div class="project-list">
+            {% for post in site.categories[page.type] %}
+            <a href="{{ post.url | relative_url }}" class="project-item">
+                <div class="project-item__thumb">
+                <img src="https://placehold.co/280x200/e9ecef/6c757d?text=Thumbnail" alt="Money Tracker Bot">
+                </div>
+                <div class="project-item__body">
+                <div class="project-item__title">{{ post.title }}</div>
+                <p class="project-item__desc">
+                    {{post.description}}
+                </p>
+                <!-- {% if post.stack %}
+                <div class="project-item__stack">
+                    {% for tag in post.stack %}
+                    <span class="project-item__tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}  -->
+                </div>
+                <div class="project-item__action">GitHub →</div>
+            </a>
+            {% endfor %}
+        </div>
+</div>  
+{% endif %}
