@@ -1,0 +1,25 @@
+<div class="demo-actions">
+  <button type="button" class="demo-btn" data-demo-toggle="{{ include.id | default: 'main' }}" aria-expanded="false">Show demo</button>
+  <a class="demo-btn outline" href="{{ include.src | relative_url }}" target="_blank" rel="noopener">Open in new tab</a>
+</div>
+<div id="demo-wrap-{{ include.id | default: 'main' }}" hidden>
+  <iframe title="Demo" data-src="{{ include.src | relative_url }}" style="width:100%; max-width:440px; height:640px; border:0; border-radius:12px; display:block; margin:0 auto;"></iframe>
+</div>
+<style>
+  .demo-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1rem 0; }
+  .demo-btn { display: inline-block; padding: .5rem 1.1rem; border-radius: 8px; border: 1px solid #3a7bd5; background: #3a7bd5; color: #fff; font: inherit; text-decoration: none; cursor: pointer; }
+  .demo-btn.outline { background: transparent; color: #3a7bd5; }
+</style>
+<script>
+  document.querySelectorAll('[data-demo-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var wrap = document.getElementById('demo-wrap-' + btn.dataset.demoToggle);
+      var frame = wrap.querySelector('iframe');
+      var open = wrap.hidden;
+      if (open && !frame.src) frame.src = frame.dataset.src;  // dimuat saat pertama kali dibuka
+      wrap.hidden = !open;
+      btn.textContent = open ? 'Hide demo' : 'Show demo';
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+</script>

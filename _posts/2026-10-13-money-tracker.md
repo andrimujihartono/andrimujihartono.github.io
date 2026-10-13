@@ -43,4 +43,7 @@ def catat(pesan):
 
 ## Tampilan
 
-![Tampilan bot di Telegram]({{ '/assets/img/money-tracker-chat.png' | relative_url }})
+![Tampilan bot di Telegram]()
+<div markdown="0">
+{% include demo/demo-button.html src="demo/tracker-money-demo.html" id="test" %}
+</div>

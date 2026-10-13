@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo Money Tracker Bot</title>
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    --page: #dfe6ee;
+    --bar: #3a7bd5;
+    --bar-ink: #ffffff;
+    --chat: #e6ebee;
+    --in: #ffffff;
+    --out: #d9f2c4;
+    --ink: #1c242b;
+    --muted: #6b7a88;
+    --ok: #2e9e4f;
+    --bad: #d64545;
+    --field: #ffffff;
+    --line: #cfd8e0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page: #0e1318; --bar: #22456f; --chat: #121a21; --in: #1f2a33; --out: #2b5278;
+      --ink: #e8eef3; --muted: #8a9aa8; --field: #1b252d; --line: #2a3640; --ok: #5ac477; --bad: #f07575;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page: #0e1318; --bar: #22456f; --chat: #121a21; --in: #1f2a33; --out: #2b5278;
+    --ink: #e8eef3; --muted: #8a9aa8; --field: #1b252d; --line: #2a3640; --ok: #5ac477; --bad: #f07575;
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+  body {
+    height: 100%; margin: 0; background: var(--page); color: var(--ink);
+    font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex; justify-content: center;
+  }
+
+  .app {
+    width: 100%; max-width: 440px; height: 100%;
+    display: flex; flex-direction: column; background: var(--chat);
+    box-shadow: 0 0 40px rgba(0,0,0,.18);
+  }
+
+  .bar { background: var(--bar); color: var(--bar-ink); padding: 10px 14px; display: flex; align-items: center; gap: 12px; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: #fff3; display: grid; place-items: center; font-size: 22px; }
+  .who { flex: 1; min-width: 0; }
+  .who b { display: block; font-size: 16px; }
+  .who small { opacity: .85; font-size: 12.5px; }
+  .theme { background: #fff2; border: 0; color: inherit; border-radius: 50%; width: 34px; height: 34px; cursor: pointer; font-size: 16px; }
+
+  .log { flex: 1; overflow-y: auto; padding: 14px 12px; display: flex; flex-direction: column; gap: 8px; }
+
+  .msg {
+    max-width: 82%; padding: 8px 11px 6px; border-radius: 14px; white-space: pre-wrap; word-break: break-word;
+    animation: pop .18s ease-out;
+  }
+  .msg time { display: block; text-align: right; font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .me { align-self: flex-end; background: var(--out); border-bottom-right-radius: 4px; }
+  .bot { align-self: flex-start; background: var(--in); border-bottom-left-radius: 4px; }
+  .bot.done { box-shadow: inset 3px 0 0 var(--ok); }
+  .bot.fail { box-shadow: inset 3px 0 0 var(--bad); }
+  .bar-text { font-family: ui-monospace, Consolas, monospace; letter-spacing: 1px; }
+  .big { font-size: 22px; font-weight: 700; }
+  @keyframes pop { from { transform: translateY(8px) scale(.97); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  .chips { display: flex; gap: 8px; padding: 6px 12px 0; overflow-x: auto; }
+  .chip {
+    flex: none; border: 1px solid var(--line); background: var(--field); color: var(--ink);
+    border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer;
+  }
+  .chip:hover { border-color: var(--bar); }
+
+  .composer { display: flex; gap: 8px; padding: 10px 12px; }
+  .composer input {
+    flex: 1; min-width: 0; border: 1px solid var(--line); background: var(--field); color: var(--ink);
+    border-radius: 22px; padding: 10px 14px; font: inherit; outline: none;
+  }
+  .composer input:focus-visible { border-color: var(--bar); outline: 2px solid color-mix(in srgb, var(--bar) 40%, transparent); }
+  .composer button {
+    width: 44px; border: 0; border-radius: 50%; background: var(--bar); color: #fff; cursor: pointer; font-size: 18px;
+  }
+  .composer button:disabled { opacity: .5; cursor: default; }
+  .composer button:focus-visible, .chip:focus-visible, .theme:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="bar">
+    <div class="avatar">💰</div>
+    <div class="who"><b>Money Tracker Bot</b><small id="sum">bot &middot; belum ada catatan</small></div>
+    <button class="theme" id="theme" aria-label="Ganti tema">◐</button>
+  </div>
+
+  <div class="log" id="log" aria-live="polite"></div>
+
+  <div class="chips" id="chips">
+    <button class="chip" data-t="makan 25000">makan 25000</button>
+    <button class="chip" data-t="kopi 18k">kopi 18k</button>
+    <button class="chip" data-t="+gaji 5jt">+gaji 5jt</button>
+    <button class="chip" data-t="-bensin 50rb">-bensin 50rb</button>
+  </div>
+
+  <div class="composer">
+    <input id="in" type="text" placeholder="Contoh: makan 25000" autocomplete="off" aria-label="Pesan">
+    <button id="send" aria-label="Kirim">➤</button>
+  </div>
+</div>
+
+<script>
+  var log = document.getElementById('log');
+  var input = document.getElementById('in');
+  var sendBtn = document.getElementById('send');
+  var sum = document.getElementById('sum');
+  var busy = false, income = 0, expense = 0;
+
+  var PATTERN = /^([+-])?\s*(.*?)\s*(\d+(?:[.,]\d+)*)\s*(k|rb|ribu|jt|juta)?$/i;
+  var UNIT = { k: 1e3, rb: 1e3, ribu: 1e3, jt: 1e6, juta: 1e6 };
+
+  function rp(n) { return 'Rp' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function now() { return new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).replace('.', ':'); }
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function parse(text) {
+    var m = PATTERN.exec(text.trim());
+    if (!m) return null;
+    var unit = (m[4] || '').toLowerCase();
+    var amount = unit ? parseFloat(m[3].replace(',', '.')) * UNIT[unit] : parseInt(m[3].replace(/[.,]/g, ''), 10);
+    if (!(amount > 0)) return null;
+    return { kind: m[1] === '+' ? 'Pemasukan' : 'Pengeluaran', desc: m[2].trim() || '-', amount: amount };
+  }
+
+  function bubble(cls, html) {
+    var el = document.createElement('div');
+    el.className = 'msg ' + cls;
+    el.innerHTML = '<div class="body"></div><time>' + now() + '</time>';
+    el.firstChild.innerHTML = html;
+    log.appendChild(el);
+    log.scrollTop = log.scrollHeight;
+    return el;
+  }
+  function setBody(el, html) { el.firstChild.innerHTML = html; log.scrollTop = log.scrollHeight; }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function updateSum() {
+    sum.textContent = 'masuk ' + rp(income) + ' · keluar ' + rp(expense) + ' · saldo ' + rp(income - expense);
+  }
+
+  async function handle(text) {
+    if (busy || !text.trim()) return;
+    busy = true; sendBtn.disabled = true;
+    input.value = '';
+    bubble('me', esc(text));
+
+    var p = parse(text);
+    await sleep(350);
+    if (!p) {
+      var bad = bubble('bot fail', 'Format belum dikenali. Contoh: makan 25000, kopi 18k, +gaji 5jt');
+      busy = false; sendBtn.disabled = false; input.focus();
+      return;
+    }
+
+    var icon = p.kind === 'Pemasukan' ? '📥' : '📤';
+    var msg = bubble('bot', '⏳ Memproses...');
+    await sleep(500);
+
+    var steps = [0.25, 0.5, 0.75, 1];
+    for (var i = 0; i < steps.length; i++) {
+      var f = steps[i], filled = Math.round(f * 10);
+      var bar = '▓'.repeat(filled) + '░'.repeat(10 - filled);
+      setBody(msg, icon + ' Mencatat ' + p.kind.toLowerCase() + '...\n<span class="bar-text">' + bar + ' ' + Math.round(f * 100) + '%</span>\n' + rp(p.amount * f));
+      await sleep(700);
+    }
+
+    if (p.kind === 'Pemasukan') income += p.amount; else expense += p.amount;
+    msg.classList.add('done');
+    setBody(msg,
+      '✅ <b>' + p.kind + ' tercatat</b>\n\n' +
+      icon + ' <span class="big">' + rp(p.amount) + '</span>\n' +
+      '📝 ' + esc(p.desc) + '\n' +
+      '🕒 ' + new Date().toLocaleString('id-ID', { dateStyle: 'short', timeStyle: 'short' }));
+    updateSum();
+
+    busy = false; sendBtn.disabled = false; input.focus();
+  }
+
+  sendBtn.addEventListener('click', function () { handle(input.value); });
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') handle(input.value); });
+  document.getElementById('chips').addEventListener('click', function (e) {
+    var t = e.target.closest('.chip'); if (t) handle(t.dataset.t);
+  });
+  document.getElementById('theme').addEventListener('click', function () {
+    var root = document.documentElement;
+    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+  });
+
+  bubble('bot', 'Kirim nominal untuk mencatat:\nmakan 25000 (pengeluaran)\nkopi 18k\n+gaji 5jt (pemasukan)');
+</script>
+</body>
+</html>
