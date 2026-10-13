@@ -1,6 +1,6 @@
 {% if page.type %}
-<div class="container py-5" style="max-width: 760px;">
-        <h1 class="h4 mb-4">{{ page.type }}</h1>
+<div class="container py-5">
+        <h1 class="page-title text-capitalize">{{ page.type }}</h1>
         <div class="project-list">
             {% for post in site.categories[page.type] %}
             <a href="{{ post.url | relative_url }}" class="project-item">

@@ -7,14 +7,201 @@
       margin: 32px auto;
       padding: 0 20px 64px;
     }
-    
-:root {
-  --proj-ink: #1a1a1a;
-  --proj-muted: #5c5c5c;
-  --proj-line: #e4e4e4;
-  --proj-accent: #2d6cdf;
-  --proj-accent-soft: #eef3fc;
-}
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+    :root {
+      --proj-ink: #1a1a1a;
+      --proj-muted: #5c5c5c;
+      --proj-line: #e4e4e4;
+      --proj-accent: #2d6cdf;
+      --proj-accent-soft: #eef3fc;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --chip: #eef2ff;
+      --line: #e5e7eb;
+      --card: #f9fafb;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #0b0f17;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --chip: #111827;
+        --line: #1f2937;
+        --card: #0d1420;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      line-height: 1.55;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: none; }
+
+    /* Page */
+    .page {
+      max-width: 960px;
+      margin: 32px auto;
+      padding: 0 20px 64px;
+    }
+
+    /* Header */
+    header {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+      padding: 24px 0 12px;
+      border-bottom: 2px solid var(--line);
+    }
+    .name {
+      font-size: clamp(28px, 3.2vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .title {
+      font-size: clamp(14px, 2.2vw, 18px);
+      color: var(--text);
+      margin-top: -4px;
+    }
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: center;
+      font-size: 14px;
+    }
+    .contacts span { color: var(--muted); }
+    .tagline {
+      margin-top: 8px;
+      font-size: 15px;
+    }
+
+    /* Layout */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    @media (min-width: 880px) {
+      .content {
+        grid-template-columns: 2fr 1fr;
+        gap: 28px;
+      }
+    }
+
+    /* Sections */
+    section {
+      background: var(--card);
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    section h2 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Experience */
+    .role {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 8px;
+      margin-bottom: 14px;
+    }
+    .role h3 {
+      margin: 0;
+      font-size: 16px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+    li { margin: 4px 0; }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid var(--line);
+    }
+
+    /* Sidebar lists */
+    .kv {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 10px;
+      font-size: 14px;
+    }
+    .kv .k { color: var(--muted); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 14px;
+    }
+
+    /* Print */
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0 auto; padding: 0; max-width: 100%; }
+      section { break-inside: avoid; background: transparent; border-color: #ddd; }
+      .no-print { display: none !important; }
+    }
+
+    /* Utilities */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      border: 0;
+    }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .grow { flex: 1 1 auto; }
+    .right { text-align: right; }
+    .muted { color: var(--muted); }
+    .btn {
+      display: inline-block;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--card);
+      cursor: pointer;
+    }
+    .btn:hover { filter: brightness(0.98); }
 
 .project-list {
   margin-top: 1rem;

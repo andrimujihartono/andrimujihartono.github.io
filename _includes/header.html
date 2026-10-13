@@ -1,26 +1,221 @@
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
+    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Thirteenth navbar example">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample11" aria-controls="navbarsExample11" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
 
-        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
+        <!-- <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample11">
           <a class="navbar-brand col-lg-3 me-0" href="{{ '/' | relative_url }}">{{ site.user.name }}</a>
           <ul class="navbar-nav col-lg-6 justify-content-lg-center">
             {% for category in site.categories %}
-            {% capture cat_name %}{{ category | first }}{% endcapture %}
+            {% capture cat_name %}{{ category | first }}{% endcapture %} -->
+            <!-- ({{ category | last | size }}) -->
+              <!-- <li class="nav-item">
+                <a class="nav-link text-capitalize" href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
+                  </a>
+              </li> -->
+<!--           
+            {% endfor %}
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end"> -->
+            <!-- <button class="btn btn-primary">Button</button> -->
+          <!-- </div>
+        </div>
+      </div>
+    </nav> -->
+<!-- <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar 3D Outline — Bootstrap 6 alpha</title>
+
+  Bootstrap 6.0 alpha (CSS) -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --nav-ink: #1a1a1a;
+      --nav-bg: #ffffff;
+      --nav-accent: #ffd84d;
+      --nav-breakpoint: 768px; /* dipakai sebagai angka di @media di bawah */
+    }
+
+    body { background-color: #fafafa; }
+
+    /* ---------- Kotak navbar utama ---------- */
+    .nav-box {
+      display: flex !important;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background-color: var(--nav-bg);
+      border: 2px solid var(--nav-ink);
+      border-radius: 10px;
+      box-shadow: 5px 5px 0 var(--nav-ink);
+      padding: 0.6rem 1rem;
+    }
+
+    .nav-box .navbar-brand {
+      margin: 0;
+      color: var(--nav-ink);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+
+    /* ---------- Tombol menu 3D ---------- */
+    .nav-btn {
+      display: inline-block;
+      background-color: var(--nav-bg);
+      color: var(--nav-ink) !important;
+      border: 2px solid var(--nav-ink) !important;
+      border-radius: 8px;
+      padding: 0.35rem 0.9rem !important;
+      box-shadow: 3px 3px 0 var(--nav-ink);
+      font-weight: 500;
+      line-height: 1.4;
+      text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+    }
+    .nav-btn:hover {
+      background-color: var(--nav-accent);
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--nav-ink);
+    }
+    .nav-btn:active,
+    .nav-btn.active {
+      background-color: var(--nav-accent);
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 var(--nav-ink);
+    }
+
+    /* ---------- Daftar menu (berlaku di desktop & di dalam drawer) ---------- */
+    .nav-box .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav-box .nav-item { margin: 0; padding: 0; }
+    .nav-box .nav-link { margin: 0; }
+
+    /* ---------- Hamburger ---------- */
+    .navbar-toggler.nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0.5rem !important;
+      cursor: pointer;
+    }
+
+    /* ======================================================
+       DESKTOP: drawer dipaksa tampil inline, toggler disembunyikan
+       (!important dipakai untuk menimpa gaya bawaan <dialog> & .drawer)
+       ====================================================== */
+    @media (min-width: 768px) {
+      .navbar-toggler.nav-btn { display: none !important; }
+
+      .nav-drawer {
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        transform: none !important;
+        translate: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+      }
+      .nav-drawer .drawer-header { display: none !important; }
+      .nav-drawer .drawer-body {
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+    } -->
+
+    <!-- /* ======================================================
+       MOBILE: drawer sisi kanan, menu tersusun vertikal
+       ====================================================== */
+    @media (max-width: 767.98px) {
+      .nav-drawer:modal {
+        background-color: var(--nav-bg);
+        border-left: 2px solid var(--nav-ink);
+        box-shadow: -5px 0 0 var(--nav-ink);
+      }
+      .nav-drawer .drawer-title { font-weight: 700; }
+      .nav-drawer .drawer-body { padding: 1rem 1.25rem 1.5rem; }
+      .nav-drawer .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
+      }
+      .nav-drawer .nav-link.nav-btn {
+        display: block;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body> --> 
+
+  <header class="container py-3">
+    <nav class="navbar nav-box" aria-label="Navigasi utama">
+      <a class="navbar-brand" href="/">AMH</a>
+
+      <!-- Tombol hamburger: hanya tampil di mobile, membuka <dialog> via Invoker Commands -->
+      <button class="navbar-toggler nav-btn" type="button"
+              commandfor="mainNav" command="show-modal"
+              aria-controls="mainNav" aria-label="Buka menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16"/>
+        </svg>
+      </button>
+
+      <!-- Menu: drawer di mobile, inline di desktop (diatur CSS di atas) -->
+      <dialog class="drawer drawer-end nav-drawer" tabindex="-1" id="mainNav" aria-labelledby="mainNavLabel">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="mainNavLabel">Menu</h5>
+          <button type="button" class="btn-close" commandfor="mainNav" command="close" aria-label="Tutup"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="navbar-nav">
+             {% for category in site.categories %}
+            {% capture cat_name %}{{ category | first }}{% endcapture %} 
             <!-- ({{ category | last | size }}) -->
               <li class="nav-item">
-                <a class="nav-link text-capitalize" href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
+                <a class="nav-link nav-btn text-capitalize" href="{{ site.baseurl }}/categories/{{ cat_name }}" id="aa">{{ cat_name }}
                   </a>
               </li>
           
             {% endfor %}
+
+            <!-- <li class="nav-item"><a class="nav-link nav-btn active" href="/project/" aria-current="page">Project</a></li>
+            <li class="nav-item"><a class="nav-link nav-btn" href="/resume/">Resume</a></li>
+            <li class="nav-item"><a class="nav-link nav-btn" href="/travel/">Travel</a></li>
+            <li class="nav-item"><a class="nav-link nav-btn" href="/blog/">Blog</a></li> -->
           </ul>
-          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
-            <!-- <button class="btn btn-primary">Button</button> -->
-          </div>
         </div>
-      </div>
+      </dialog>
     </nav>
+  </header>
+
+  <!-- BS6: JavaScript hanya ESM (tidak ada window.bootstrap) -->
+  <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> -->

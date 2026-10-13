@@ -1,0 +1,719 @@
+
+    :root {
+      color-scheme: light;
+      --nav-ink: #1a1a1a;
+      --nav-bg: #ffffff;
+      --nav-accent: #ffd84d;
+      --nav-breakpoint: 768px; /* dipakai sebagai angka di @media di bawah */
+    }
+ 
+    body { background-color: #fafafa; }
+ 
+    /* ---------- Kotak navbar utama ---------- */
+    .nav-box {
+      display: flex !important;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background-color: var(--nav-bg);
+      border: 2px solid var(--nav-ink);
+      border-radius: 10px;
+      box-shadow: 5px 5px 0 var(--nav-ink);
+      padding: 0.6rem 1rem;
+    }
+ 
+    .nav-box .navbar-brand {
+      margin: 0;
+      color: var(--nav-ink);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+ 
+    /* ---------- Tombol menu 3D ---------- */
+    .nav-btn {
+      display: inline-block;
+      background-color: var(--nav-bg);
+      color: var(--nav-ink) !important;
+      border: 2px solid var(--nav-ink) !important;
+      border-radius: 8px;
+      padding: 0.35rem 0.9rem !important;
+      box-shadow: 3px 3px 0 var(--nav-ink);
+      font-weight: 500;
+      line-height: 1.4;
+      text-decoration: none;
+      transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+    }
+    .nav-btn:hover {
+      background-color: var(--nav-accent);
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--nav-ink);
+    }
+    .nav-btn:active,
+    .nav-btn.active {
+      background-color: var(--nav-accent);
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 var(--nav-ink);
+    }
+ 
+    /* ---------- Daftar menu (berlaku di desktop & di dalam drawer) ---------- */
+    .nav-box .navbar-nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav-box .nav-item { margin: 0; padding: 0; }
+    .nav-box .nav-link { margin: 0; }
+ 
+    /* ---------- Hamburger ---------- */
+    .navbar-toggler.nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.3rem 0.5rem !important;
+      cursor: pointer;
+    }
+ 
+    /* ======================================================
+       DESKTOP: drawer dipaksa tampil inline, toggler disembunyikan
+       (!important dipakai untuk menimpa gaya bawaan <dialog> & .drawer)
+       ====================================================== */
+    @media (min-width: 768px) {
+      .navbar-toggler.nav-btn { display: none !important; }
+ 
+      .nav-drawer {
+        display: block !important;
+        position: static !important;
+        inset: auto !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        transform: none !important;
+        translate: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+      }
+      .nav-drawer .drawer-header { display: none !important; }
+      .nav-drawer .drawer-body {
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+    }
+ 
+    /* ======================================================
+       MOBILE: drawer sisi kanan, menu tersusun vertikal
+       ====================================================== */
+    @media (max-width: 767.98px) {
+      .nav-drawer:modal {
+        background-color: var(--nav-bg);
+        border-left: 2px solid var(--nav-ink);
+        box-shadow: -5px 0 0 var(--nav-ink);
+      }
+      .nav-drawer .drawer-title { font-weight: 700; }
+      .nav-drawer .drawer-body { padding: 1rem 1.25rem 1.5rem; }
+      .nav-drawer .navbar-nav {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
+      }
+      .nav-drawer .nav-link.nav-btn {
+        display: block;
+        text-align: left;
+      }
+    }
+ 
+    /* ======================================================
+       WRAPPER (header & konten selebar sama)
+       ====================================================== */
+    .site-wrap {
+      max-width: 960px;
+      margin-inline: auto;
+      padding: 1rem;
+    }
+ 
+    /* ======================================================
+       PROJECT LIST — tema 3D outline
+       ====================================================== */
+    :root {
+      --tag-1: #a5d8ff; /* biru muda */
+      --tag-2: #b2f2bb; /* hijau mint */
+      --tag-3: #ffc9de; /* pink */
+    }
+ 
+    .page-title {
+      display: inline-block;
+      margin: 1.25rem 0 1.75rem;
+      padding: 0 0.3rem;
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--nav-ink);
+      /* efek stabilo kuning di bawah teks */
+      background: linear-gradient(transparent 58%, var(--nav-accent) 58%);
+    }
+ 
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;           /* ruang untuk bayangan solid */
+      padding-bottom: 3rem;
+    }
+ 
+    .project-item {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1rem;
+      background-color: var(--nav-bg);
+      color: var(--nav-ink);
+      text-decoration: none;
+      border: 2px solid var(--nav-ink);
+      border-radius: 10px;
+      box-shadow: 5px 5px 0 var(--nav-ink);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .project-item:hover {
+      color: var(--nav-ink);
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 var(--nav-ink);
+    }
+    .project-item:active {
+      transform: translate(4px, 4px);
+      box-shadow: 1px 1px 0 var(--nav-ink);
+    }
+ 
+    .project-item__thumb {
+      flex: 0 0 150px;
+      width: 150px;
+      height: 105px;
+      overflow: hidden;
+      background-color: #eee;
+      border: 2px solid var(--nav-ink);
+      border-radius: 8px;
+    }
+    .project-item__thumb img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    .project-item__body {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .project-item__title {
+      margin: 0 0 0.25rem;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .project-item__desc {
+      max-width: 60ch;
+      margin: 0 0 0.7rem;
+      font-size: 0.95rem;
+      color: #4a4a4a;
+    }
+ 
+    .project-item__stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .project-item__tag {
+      padding: 0.05rem 0.65rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      line-height: 1.6;
+      background-color: #fff;
+      border: 1.5px solid var(--nav-ink);
+      border-radius: 100px;
+    }
+    .project-item__tag:nth-child(3n+1) { background-color: var(--tag-1); }
+    .project-item__tag:nth-child(3n+2) { background-color: var(--tag-2); }
+    .project-item__tag:nth-child(3n+3) { background-color: var(--tag-3); }
+ 
+    /* Tombol aksi kecil bergaya sama dengan menu navbar */
+    .project-item__action {
+      flex: 0 0 auto;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+      background-color: var(--nav-bg);
+      border: 2px solid var(--nav-ink);
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 var(--nav-ink);
+      transition: background-color .12s ease;
+    }
+    .project-item:hover .project-item__action {
+      background-color: var(--nav-accent);
+    }
+ 
+    /* Mobile: susunan vertikal */
+    @media (max-width: 575.98px) {
+      .project-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.9rem;
+      }
+      .project-item__thumb {
+        width: 100%;
+        flex-basis: auto;
+        height: 170px;
+      }
+      .project-item__action { align-self: flex-start; }
+    }
+ 
+    /* ======================================================
+       FOOTER — tema 3D outline
+       ====================================================== */
+    .site-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: var(--nav-ink);
+      background-color: var(--nav-bg);
+      border: 2px solid var(--nav-ink);
+      border-radius: 10px;
+      box-shadow: 5px 5px 0 var(--nav-ink);
+    }
+    .site-footer__built {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+    }
+    .site-footer__heart {
+      width: 1.2em;
+      height: 1.2em;
+      fill: #ff6b8b;
+      stroke: var(--nav-ink);
+      stroke-width: 2;
+      stroke-linejoin: round;
+      animation: heartbeat 1.6s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%, 60%, 100% { transform: scale(1); }
+      15%           { transform: scale(1.18); }
+      30%           { transform: scale(1); }
+      45%           { transform: scale(1.12); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .site-footer__heart { animation: none; }
+    }
+    .site-footer-wrap { padding-top: 0; padding-bottom: 2rem; }
+ 
+/* ======================================================
+   ARTICLE DETAIL — tema 3D outline
+   Memakai token dari navbar css: --nav-ink, --nav-bg, --nav-accent
+   (dan --tag-1..3 jika ada; fallback sudah disediakan)
+   Prefix .article sengaja dipakai agar tidak bentrok dengan
+   class bawaan tema Minima (.post-title, .post-content, dst.)
+   ====================================================== */
+.article {
+  max-width: 960px;
+  margin-inline: auto;
+  padding-bottom: 3rem;
+}
+ 
+/* ---------- Tombol kecil (kembali / sebelumnya / berikutnya) ---------- */
+.article__back,
+.article__nav-link {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--nav-ink);
+  text-decoration: none;
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--nav-ink);
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+}
+.article__back:hover,
+.article__nav-link:hover {
+  color: var(--nav-ink);
+  background-color: var(--nav-accent);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--nav-ink);
+}
+.article__back:active,
+.article__nav-link:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--nav-ink);
+}
+.article__back { margin-bottom: 1.75rem; }
+ 
+/* ---------- Header artikel ---------- */
+.article__header { margin-bottom: 1.75rem; }
+ 
+.article__title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--nav-ink);
+}
+.article__title span {
+  padding: 0 0.3rem;
+  background: linear-gradient(transparent 58%, var(--nav-accent) 58%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+ 
+.article__meta,
+.article__stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+.article__stack { margin-top: 0.6rem; }
+ 
+.article__chip {
+  padding: 0.05rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--nav-ink);
+  background-color: #fff;
+  border: 1.5px solid var(--nav-ink);
+  border-radius: 100px;
+}
+.article__chip--date { background-color: var(--nav-accent); }
+.article__chip--cat  { background-color: var(--tag-1, #a5d8ff); }
+.article__stack .article__chip:nth-child(3n+1) { background-color: var(--tag-1, #a5d8ff); }
+.article__stack .article__chip:nth-child(3n+2) { background-color: var(--tag-2, #b2f2bb); }
+.article__stack .article__chip:nth-child(3n+3) { background-color: var(--tag-3, #ffc9de); }
+ 
+/* ---------- Isi artikel (kartu 3D) ---------- */
+.article__body {
+  padding: 1.75rem 2rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #222;
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-ink);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 var(--nav-ink);
+  overflow-wrap: anywhere;
+}
+.article__body > :first-child { margin-top: 0; }
+.article__body > :last-child  { margin-bottom: 0; }
+ 
+.article__body p { margin: 0 0 1.1rem; }
+ 
+.article__body h2 {
+  margin: 2rem 0 0.8rem;
+  padding-bottom: 0.3rem;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.3;
+  border-bottom: 2px solid var(--nav-ink);
+}
+.article__body h3 {
+  margin: 1.6rem 0 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.article__body h3::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.5rem;
+  background-color: var(--nav-accent);
+  border: 2px solid var(--nav-ink);
+  border-radius: 2px;
+}
+ 
+/* Link: efek stabilo kuning */
+.article__body a {
+  color: var(--nav-ink);
+  font-weight: 600;
+  text-decoration: none;
+  background-image: linear-gradient(transparent 62%, var(--nav-accent) 62%);
+}
+.article__body a:hover { background-color: var(--nav-accent); }
+ 
+.article__body ul,
+.article__body ol { margin: 0 0 1.1rem; padding-left: 1.4rem; }
+.article__body li { margin-bottom: 0.35rem; }
+.article__body li::marker { font-weight: 700; }
+ 
+/* Kode inline */
+.article__body :not(pre) > code {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.88em;
+  color: var(--nav-ink);
+  background-color: #f4f4ee;
+  border: 1.5px solid var(--nav-ink);
+  border-radius: 5px;
+}
+ 
+/* Blok kode (termasuk pembungkus Rouge milik Jekyll) */
+.article__body div.highlighter-rouge,
+.article__body figure.highlight,
+.article__body .highlight {
+  margin: 0 0 1.25rem;
+  background: transparent;
+}
+.article__body pre {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--nav-ink);
+  background-color: #f7f7f2;
+  border: 2px solid var(--nav-ink);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--nav-ink);
+}
+.article__body .highlight pre,
+.article__body div.highlighter-rouge pre { margin: 0; }
+.article__body pre code {
+  padding: 0;
+  font-size: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+ 
+/* Kutipan */
+.article__body blockquote {
+  margin: 0 0 1.25rem;
+  padding: 0.8rem 1.1rem;
+  color: #333;
+  font-style: normal;
+  background-color: #fff4c2;
+  border: 2px solid var(--nav-ink);
+  border-left-width: 8px;
+  border-radius: 8px;
+}
+.article__body blockquote p:last-child { margin-bottom: 0; }
+ 
+/* Gambar */
+.article__body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.25rem 0;
+  border: 2px solid var(--nav-ink);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 var(--nav-ink);
+}
+ 
+/* Tabel */
+.article__body table {
+  display: block;
+  max-width: 100%;
+  margin: 0 0 1.25rem;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  border-collapse: collapse;
+}
+.article__body th,
+.article__body td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border: 2px solid var(--nav-ink);
+}
+.article__body th { font-weight: 700; background-color: var(--nav-accent); }
+ 
+.article__body hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 2px solid var(--nav-ink);
+  opacity: 1;
+}
+ 
+/* ---------- Navigasi sebelumnya / berikutnya ---------- */
+.article__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+ 
+@media (max-width: 575.98px) {
+  .article__body { padding: 1.1rem; font-size: 1rem; }
+}
+
+
+/* ======================================================
+   ABOUT PAGE — tema 3D outline
+   Memakai token dari navbar css: --nav-ink, --nav-bg, --nav-accent
+   ====================================================== */
+.about {
+  max-width: 960px;
+  margin-inline: auto;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+ 
+.about-card {
+  padding: 1.5rem 1.75rem;
+  color: var(--nav-ink);
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-ink);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 var(--nav-ink);
+}
+ 
+/* ---------- Hero: avatar + nama ---------- */
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+ 
+.about-avatar {
+  display: block;
+  flex: 0 0 auto;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  background-color: var(--nav-accent);
+  border: 3px solid var(--nav-ink);
+  border-radius: 50%;
+  box-shadow: 5px 5px 0 var(--nav-ink);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.about-avatar:hover {
+  transform: translate(-2px, -2px) rotate(-3deg);
+  box-shadow: 7px 7px 0 var(--nav-ink);
+}
+ 
+.about-name {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.3;
+}
+.about-name span {
+  padding: 0 0.3rem;
+  background: linear-gradient(transparent 58%, var(--nav-accent) 58%);
+}
+.about-role {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  color: #4a4a4a;
+}
+ 
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.about-link {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--nav-ink);
+  text-decoration: none;
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-ink);
+  border-radius: 8px;
+  box-shadow: 3px 3px 0 var(--nav-ink);
+  transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease;
+}
+.about-link:hover {
+  color: var(--nav-ink);
+  background-color: var(--nav-accent);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--nav-ink);
+}
+.about-link:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--nav-ink);
+}
+ 
+/* ---------- Judul bagian ---------- */
+.about-heading {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.4;
+  background: linear-gradient(transparent 58%, var(--nav-accent) 58%);
+}
+ 
+/* ---------- Ringkasan ---------- */
+.about-summary p {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.about-summary p:last-child { margin-bottom: 0; }
+ 
+/* ---------- Stack ---------- */
+.about-stack-group + .about-stack-group { margin-top: 1.4rem; }
+ 
+.about-stack-group__title {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+}
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.about-chip {
+  padding: 0.2rem 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--nav-ink);
+  background-color: #fff;
+  border: 2px solid var(--nav-ink);
+  border-radius: 100px;
+  box-shadow: 2px 2px 0 var(--nav-ink);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.about-chip:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--nav-ink);
+}
+.about-chip:nth-child(3n+1) { background-color: var(--tag-1, #a5d8ff); }
+.about-chip:nth-child(3n+2) { background-color: var(--tag-2, #b2f2bb); }
+.about-chip:nth-child(3n+3) { background-color: var(--tag-3, #ffc9de); }
+ 
+/* ---------- Mobile ---------- */
+@media (max-width: 575.98px) {
+  .about-card { padding: 1.25rem; }
+  /* .about {max-width: 360px; margin-inline:auto; } */
+  .about-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-links { justify-content: center; }
+}

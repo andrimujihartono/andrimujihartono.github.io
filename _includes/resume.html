@@ -15,7 +15,7 @@
       --line: #e5e7eb;
       --card: #f9fafb;
     }
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
       :root {
         --bg: #0b0f17;
         --text: #e5e7eb;
@@ -188,7 +188,7 @@
     .btn:hover { filter: brightness(0.98); }
   </style>
 </head>
-<body>
+<body class="white" data-bs-theme="light">
   <div class="page" role="document">
     <div class="no-print row" style="justify-content: space-between; align-items: center; margin-top: 12px;">
       <span class="muted">Tip: Update text, then use “Save as PDF”.</span>
@@ -213,7 +213,7 @@
       </p>
     </header>
 
-    <main class="content">
+    <main class="content white">
       <!-- Main column -->
       <div>
         <section aria-labelledby="experience">
