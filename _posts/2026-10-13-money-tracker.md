@@ -8,6 +8,7 @@ stack:
   - Python
   - Telegram API
   - Google Sheets
+author: amh
 ---
 
 Money Tracker adalah bot Telegram untuk mencatat pemasukan dan pengeluaran harian
@@ -45,5 +46,5 @@ def catat(pesan):
 
 ![Tampilan bot di Telegram]()
 <div markdown="0">
-{% include demo/demo-button.html src="demo/tracker-money-demo.html" id="test" %}
+{% include demo/tracker-money-demo.html  id="test" %}
 </div>

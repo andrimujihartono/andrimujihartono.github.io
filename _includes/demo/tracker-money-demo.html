@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html> -->
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -22,7 +22,7 @@
     --field: #ffffff;
     --line: #cfd8e0;
   }
-  @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: light) {
     :root:not([data-theme="light"]) {
       --page: #0e1318; --bar: #22456f; --chat: #121a21; --in: #1f2a33; --out: #2b5278;
       --ink: #e8eef3; --muted: #8a9aa8; --field: #1b252d; --line: #2a3640; --ok: #5ac477; --bad: #f07575;
@@ -34,17 +34,13 @@
   }
 
   *, *::before, *::after { box-sizing: inherit; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
-  body {
-    height: 100%; margin: 0; background: var(--page); color: var(--ink);
-    font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    display: flex; justify-content: center;
-  }
+
 
   .app {
     width: 100%; max-width: 440px; height: 100%;
     display: flex; flex-direction: column; background: var(--chat);
     box-shadow: 0 0 40px rgba(0,0,0,.18);
+    font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
 
   .bar { background: var(--bar); color: var(--bar-ink); padding: 10px 14px; display: flex; align-items: center; gap: 12px; }
