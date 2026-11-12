@@ -755,7 +755,7 @@
   padding-top: 0;
   padding-bottom: calc(clamp(1rem, 4vw, 2rem) + env(safe-area-inset-bottom, 0px));
   width: 100%;
-  max-width: none;
+  max-width: 77.3%;
 }
 
 .site-footer {
@@ -768,6 +768,7 @@
   gap: 0.5rem 1rem;
 
   width: 100%;
+  /* max-width: 960px; */
   padding: clamp(0.6rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1.25rem);
   font-size: clamp(0.8rem, 2.2vw, 0.9rem);
   line-height: 1.4;
@@ -784,6 +785,7 @@
 
 .site-footer > * {
   min-width: 0;
+  /* max-width: 77.3%; */
   overflow-wrap: anywhere;
 }
 
@@ -814,12 +816,13 @@
 
 /* Ponsel: susun vertikal dan rata tengah */
 @media (max-width: 575.98px) {
-  .site-footer {
-    /* flex-direction: column;
-    justify-content: center;
-    text-align: center; */
-    width: 100%;
+  .site-footer-wrap{
     max-width: none;
+  }
+  .site-footer { 
+    flex-direction: column;
+    justify-content:center;
+
   }
   /* .site-footer__built {
     justify-content: center;
@@ -831,7 +834,7 @@
 }
 
 
-  :root {
+:root {
     --nav-ink: #111;
     --nav-bg: #fff;
     --content-max: 960px;
