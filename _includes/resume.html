@@ -29,10 +29,8 @@
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height: 1.55;
-      color: var(--text);
-      background: var(--bg);
+     line-height: 1.55;
+
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -50,7 +48,7 @@
       gap: 12px;
       grid-template-columns: 1fr;
       padding: 24px 0 12px;
-      border-bottom: 2px solid var(--line);
+      /* border-bottom: 2px solid var(--line); */
     }
     .name {
       font-size: clamp(28px, 3.2vw, 40px);
@@ -95,6 +93,7 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 12px;
+      margin: 2px;
     }
     section h2 {
       margin: 0 0 12px 0;
@@ -162,6 +161,22 @@
       .page { margin: 0 auto; padding: 0; max-width: 100%; }
       section { break-inside: avoid; background: transparent; border-color: #ddd; }
       .no-print { display: none !important; }
+      .site-footer-wrap,
+      .nav,
+      .no-print {
+        display: none !important;
+      }
+      .navbar, .nav-box, .no-print{
+        display: none !important;
+      }
+
+        hr,
+  .divider,
+  .resume h1,
+  .page-header {
+    border: 0 !important;
+  }
+  hr { display: none !important; }
     }
 
     /* Utilities */
@@ -201,15 +216,13 @@
         <div class="title">Software Engineer</div>
       </div>
       <div class="contacts" aria-label="contact info">
-        <span>City, Country</span>
-        <a href="mailto:andrimujihartono@gmail.com">andrimujihartono@gmail.com</a>
-        <a href="tel:+628123456789">+62 812-3456-789</a>
-        <a href="https://linkedin.com/in/yourhandle">linkedin.com/in/yourhandle</a>
-        <a href="https://github.com/andrimujihartono">github.com/yourhandle</a>
+        <span>Jakarta, ID</span>
+        <a href="mailto:andrimujihartono@gmail.com" target="_blank" rel="noopener noreferrer">andrimujihartono@gmail.com</a>
+        <a href="https://github.com/andrimujihartono" target="_blank" rel="noopener noreferrer">github.com/andrimujihartono</a>
       </div>
-      <p class="tagline">
-        2–3 line summary highlighting your strengths, domain expertise, and what you’re looking for.
-        Keep it concise, concrete, and tailored to the role.
+      <p class="tagline">.NET Developer with 5+ years of experience in software development, 
+        specializing in banking and financial services applications. Skilled in C#, VB.NET, .NET, MSSQL, Entity Framework, and RESTful API development, with proven experience in ETL automation, reconciliation systems, and backend optimization. Passionate about building scalable, 
+        reliable solutions and seeking opportunities to contribute to impactful software engineering projects.
       </p>
     </header>
 
@@ -220,49 +233,53 @@
           <h2 id="experience">Experience</h2>
 
           <div class="role">
-            <h3>Senior Frontend Engineer • PT Contoso</h3>
-            <div class="meta">Jan 2023 – Present • Jakarta, ID</div>
+            <h3>Software Application Developer Engineer • PT NTT Indonesia Technology</h3>
+            <div class="meta">Jan 2019 – Present • Jakarta, ID</div>
             <div class="meta" style="grid-column: 1 / -1;">
-              React, TypeScript, Next.js, Tailwind
+               C#, VB .NET, MSSQL, Python, EF, Jenkins
             </div>
           </div>
           <ul>
-            <li>Led redesign of e‑commerce UI and improved conversion by 18% through A/B testing.</li>
-            <li>Built design system components shared across 4 apps, cutting dev time by 30%.</li>
-            <li>Collaborated with backend team to optimize API calls, reducing TTFB by 40%.</li>
+              <li>Participated in architecture, design, and implementation of back-end features using VB.NET, C#, MSSQL, and Entity Framework.</li>
+              <li>Implemented an automated ETL process using C# and MSSQL to enhance operational efficiency and data accuracy, supporting daily settlement and General Ledger reconciliation for Cards, Mutual Fund, and Personal Loan products.</li>
+              <li>Developed an application to streamline the data reconciliation process for the Joint Financing Scheme (JFS), reducing processing time by approximately 90%.</li>
+              <li>Built reusable code and libraries to support efficient development and implementation across multiple projects.</li>
+              <li>Modernized legacy codebases to align with current development standards and improve functionality.</li>
+              <li>Collaborated with management, internal teams, and development partners to design software applications that streamlined banking operations.</li>
+
           </ul>
 
           <div class="role" style="margin-top: 14px;">
-            <h3>Software Engineer • Fabrikam</h3>
-            <div class="meta">Aug 2020 – Dec 2022 • Remote</div>
+            <h3>Software Engineer • PT Solutech Inovasi Teknologi</h3>
+            <div class="meta">Jul 2017 – Dec 2018 • Jakarta, ID</div>
             <div class="meta" style="grid-column: 1 / -1;">
-              Node.js, Express, PostgreSQL, GCP
+              Laravel, TypeScript, Next.js, Tailwind
             </div>
           </div>
           <ul>
-            <li>Designed and implemented REST APIs handling 2M+ requests/day with 99.95% uptime.</li>
-            <li>Introduced observability (logs, traces, metrics) using OpenTelemetry.</li>
-            <li>Mentored 3 junior engineers through weekly code reviews and pairing.</li>
-          </ul>
-        </section>
+            <li>Participated in the e-commerce product development team, contributing to software design, development, and cross-functional collaboration.</li>
+            <li>Developed and implemented RESTful APIs to enable seamless data access and efficient integration across internal and external systems.</li>
+            <li>Developed and enhanced the company's Point of Sale (POS) system features using the Laravel framework and JavaScript.</li>
+            <li>Troubleshot and debugged application issues, providing timely resolutions and proactive recommendations.</li>
 
-        <section aria-labelledby="projects">
-          <h2 id="projects">Projects</h2>
+          </ul>
+
           <div class="role">
-            <h3>Keyword Sentiment Dashboard</h3>
-            <div class="meta">2024</div>
-            <div class="meta" style="grid-column: 1 / -1;">Python, FastAPI, SQLite, Charts</div>
+            <h3>IT Helpdesk • PT Solutech Inovasi Teknologi</h3>
+            <div class="meta">Jul 2017 – Dec 2018 • Jakarta, ID</div>
+            <div class="meta" style="grid-column: 1 / -1;">
+              VB .NET, PHP, C#, MSSQL
+            </div>
           </div>
           <ul>
-            <li>Ingested social posts by keyword and classified sentiment with 86% F1.</li>
-            <li>Delivered interactive charts and automated weekly PDF summaries.</li>
-          </ul>
-
-          <div class="chips">
-            <span class="chip">Demo: yourwebsite.com/sentiment</span>
-            <span class="chip">Code: github.com/you/sentiment</span>
-          </div>
+              <li>Managed administrative server functions, including backups, system upgrades, recovery, disk space management, and other maintenance activities.</li>
+              <li>Enhanced existing codebases and performed bug fixes to improve application functionality and stability.</li>
+              <li>Successfully troubleshot and resolved user-reported issues, ensuring timely resolutions and user satisfaction.</li>
+              <li>Configured hardware, devices, and software to establish fully functional workstations for employees.</li>
+          </ul>                    
         </section>
+
+
       </div>
 
       <!-- Sidebar column -->
@@ -272,8 +289,8 @@
           <div class="chips" aria-label="skills list">
             <span class="chip">JavaScript</span>
             <span class="chip">TypeScript</span>
-            <span class="chip">React</span>
-            <span class="chip">Next.js</span>
+            <span class="chip">Angular</span>
+            <span class="chip">.Net Core</span>
             <span class="chip">Node.js</span>
             <span class="chip">SQL</span>
             <span class="chip">Testing</span>
@@ -284,19 +301,11 @@
         <section aria-labelledby="education">
           <h2 id="education">Education</h2>
           <div class="kv">
-            <div class="k">Degree</div><div class="v"><strong>B.Sc. Computer Science</strong></div>
-            <div class="k">School</div><div class="v">Universitas XYZ</div>
-            <div class="k">Years</div><div class="v">2016 – 2020</div>
-            <div class="k">GPA</div><div class="v">3.7 / 4.0</div>
+            <div class="k">Degree</div><div class="v"><strong>Associate Degree in Informatics Engineering.</strong></div>
+            <div class="k">School</div><div class="v">LP3I Jakarta</div>
+            <div class="k">Years</div><div class="v">2014 – 2017</div>
+            <!-- <div class="k">GPA</div><div class="v">3.7 / 4.0</div> -->
           </div>
-        </section>
-
-        <section aria-labelledby="extras">
-          <h2 id="extras">Certs & Awards</h2>
-          <ul>
-            <li>AWS Certified Cloud Practitioner (2024)</li>
-            <li>Top 5% – Frontend Mentor (2023)</li>
-          </ul>
         </section>
 
         <section aria-labelledby="languages">
@@ -311,21 +320,5 @@
 
   </div>
 
-  <!-- Optional: structured data to help SEO when hosted online -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Your Name",
-    "url": "https://yourwebsite.com",
-    "email": "you@example.com",
-    "telephone": "+628123456789",
-    "jobTitle": "Frontend Engineer",
-    "sameAs": [
-      "https://linkedin.com/in/yourhandle",
-      "https://github.com/yourhandle"
-    ]
-  }
-  </script>
 </body>
 </html>

@@ -6,8 +6,37 @@
       --nav-accent: #ffd84d;
       --nav-breakpoint: 768px; /* dipakai sebagai angka di @media di bawah */
     }
- 
-    body { background-color: #fafafa; }
+  
+  /* ===== Pilihan background (ganti nilai data-bg di <html>) ===== */
+  html[data-bg="a"] {
+    --page-bg: #fff4d6;
+    --page-pattern: radial-gradient(rgba(0, 0, 0, .18) 1.5px, transparent 1.5px);
+    --page-size: 20px 20px;
+  }
+  html[data-bg="b"] {
+    --page-bg: #e9e3ff;
+    --page-pattern:
+      linear-gradient(rgba(0, 0, 0, .07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, .07) 1px, transparent 1px);
+    --page-size: 28px 28px;
+  }
+  html[data-bg="c"] {
+    --page-bg: #d3f9d8;
+    --page-pattern: repeating-linear-gradient(45deg, rgba(0, 0, 0, .06) 0 2px, transparent 2px 14px);
+    --page-size: auto;
+  }
+  html[data-bg="d"] {
+    --page-bg: #ffe27a;
+    --page-pattern: conic-gradient(rgba(255, 255, 255, .35) 25%, transparent 0 50%, rgba(255, 255, 255, .35) 0 75%, transparent 0);
+    --page-size: 40px 40px;
+  }
+
+    body { 
+      
+    background-color: var(--page-bg);
+    background-image: var(--page-pattern);
+    background-size: var(--page-size);
+}
  
     /* ---------- Kotak navbar utama ---------- */
     .nav-box {
@@ -278,7 +307,7 @@
     /* ======================================================
        FOOTER — tema 3D outline
        ====================================================== */
-    .site-footer {
+    /* .site-footer {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -316,7 +345,7 @@
     @media (prefers-reduced-motion: reduce) {
       .site-footer__heart { animation: none; }
     }
-    .site-footer-wrap { padding-top: 0; padding-bottom: 2rem; }
+    .site-footer-wrap { padding-top: 0; padding-bottom: 2rem; } */
  
 /* ======================================================
    ARTICLE DETAIL — tema 3D outline
@@ -717,3 +746,96 @@
   }
   .about-links { justify-content: center; }
 }
+
+
+/* ======================================================
+   FOOTER: tema 3D outline (responsif)
+   ====================================================== */
+.site-footer-wrap {
+  padding-top: 0;
+  padding-bottom: calc(clamp(1rem, 4vw, 2rem) + env(safe-area-inset-bottom, 0px));
+  width: 100%;
+  max-width: none;
+}
+
+.site-footer {
+  --footer-shadow: clamp(3px, 0.9vw, 5px);
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+
+  width: 100%;
+  padding: clamp(0.6rem, 2vw, 0.75rem) clamp(0.75rem, 3vw, 1.25rem);
+  font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+  line-height: 1.4;
+  color: var(--nav-ink);
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-ink);
+  border-radius: clamp(8px, 2vw, 10px);
+  box-shadow: var(--footer-shadow) var(--footer-shadow) 0 var(--nav-ink);
+
+  /* beri ruang untuk bayangan agar tidak terpotong di tepi layar */
+  margin-right: var(--footer-shadow);
+  margin-bottom: var(--footer-shadow);
+}
+
+.site-footer > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.site-footer__built {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.site-footer__heart {
+  width: 1.2em;   /* ikut ukuran font, jadi ikut responsif */
+  height: 1.2em;
+  flex-shrink: 0;
+  fill: #ff6b8b;
+  stroke: var(--nav-ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 60%, 100% { transform: scale(1); }
+  15%           { transform: scale(1.18); }
+  30%           { transform: scale(1); }
+  45%           { transform: scale(1.12); }
+}
+
+/* Ponsel: susun vertikal dan rata tengah */
+@media (max-width: 575.98px) {
+  .site-footer {
+    /* flex-direction: column;
+    justify-content: center;
+    text-align: center; */
+    width: 100%;
+    max-width: none;
+  }
+  /* .site-footer__built {
+    justify-content: center;
+  } */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__heart { animation: none; }
+}
+
+
+  :root {
+    --nav-ink: #111;
+    --nav-bg: #fff;
+    --content-max: 960px;
+    --gutter: clamp(.75rem, 3vw, 1.5rem);
+    --shadow: clamp(3px, .9vw, 5px);
+  }
+
